@@ -9,7 +9,8 @@ node {
 	echo "WORKSPACE   : $workspace"
 
     stage ("docker build") {
-    	sudo sh 'docker build -f Dockerfile -t build-server-sanity:1.0.0'
+    	// sh 'docker build -f Dockerfile -t build-server-sanity:1.0.0'
+    	echo("build")
     }
 	stage ("lint & test") {
 	    parallel "lint": {
