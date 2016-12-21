@@ -1,0 +1,19 @@
+{
+  "name": "build-server-sanity",
+  "version": "1.0.0",
+  "description": "simple test for sanity",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/robbdempsey/build-server-sanity.git"
+  },
+  "author": "robb dempsey <robb.dempsey@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/robbdempsey/build-server-sanity/issues"
+  },
+  "homepage": "https://github.com/robbdempsey/build-server-sanity#readme"
+}
