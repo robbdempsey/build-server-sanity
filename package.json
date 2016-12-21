@@ -1,13 +1,14 @@
 {
   "name": "build-server-sanity",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "simple test for sanity",
   "main": "index.js",
   "engines": {
     "node": "6.9.1"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "./node_modules/.bin/eslint ./test/build-docker.js",
+    "test": "./node_modules/mocha/bin/_mocha ./test/build-docker.js "
   },
   "repository": {
     "type": "git",
@@ -18,5 +19,13 @@
   "bugs": {
     "url": "https://github.com/robbdempsey/build-server-sanity/issues"
   },
-  "homepage": "https://github.com/robbdempsey/build-server-sanity#readme"
+  "homepage": "https://github.com/robbdempsey/build-server-sanity#readme",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "eslint": "^3.12.2",
+    "eslint-config-google": "^0.7.1",
+    "mocha": "^3.2.0"
+  }
 }
