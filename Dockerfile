@@ -3,8 +3,13 @@
 FROM node:boron
 MAINTAINER robb dempsey <robb.dempsey@gmail.com>
 
-RUN mkdir -p /usr/src/app
-WORKDIR /usr/src/app
+ENV HOME=/usr/src/app
 
-COPY package.json /usr/src/app/
+RUN mkdir -p ${HOME}
+WORKDIR ${HOME}
+
+COPY package.json ${HOME}/
+COPY .eslintrc ${HOME}/
+COPY ./test ${HOME}/test
+
 RUN npm install

@@ -1,6 +1,6 @@
 {
   "name": "build-server-sanity",
-  "version": "1.0.1",
+  "version": "1.3.0",
   "description": "simple test for sanity",
   "main": "index.js",
   "engines": {

@@ -2,24 +2,25 @@
 import jenkins.model.Jenkins
 
 node {
-	def buildNumber = env.BUILD_NUMBER
-	def workspace = env.WORKSPACE
-	// PRINT ENVIRONMENT TO JOB
-	echo "BUILD-NUMBER: $buildNumber"
-	echo "WORKSPACE   : $workspace"
+  def buildNumber = env.BUILD_NUMBER
+  // PRINT ENVIRONMENT TO JOB
+  echo "BUILD-NUMBER: $buildNumber"
 
-    stage ("docker build") {
-    	echo("do build")
+  stage ("pull code") {
+    checkout scm
+  }
 
-    	sh 'docker build -f Dockerfile -t build-server-sanity:1.0.0'
-    	
-    }
-	stage ("lint & test") {
-	    parallel "lint": {
-				echo("run lint")
-	    	},
-	    	"unit": {
-	    		echo("do unit")
-	    	}
-	}
+  stage ("docker build") {
+    echo("do build")
+    sh 'docker build . -t build-server-sanity:1.3.0'
+  }
+
+  stage ("lint & test") {
+      parallel "lint": {
+        sh 'docker run -i --rm -v $PWD:/usr/src/app -u root build-server-sanity:1.3.0 npm run lint'
+        },
+        "unit": {
+          sh 'docker run -i --rm -v $PWD:/usr/src/app -u root build-server-sanity:1.3.0 npm run test'
+        }
+  }
 }
