@@ -17,10 +17,10 @@ node {
 
   stage ("lint & test") {
       parallel "lint": {
-        sh 'docker run -i --rm -v $PWD:/usr/src/app -u root build-server-sanity:1.3.0 npm run lint'
+        sh 'docker run -i --rm -v $PWD:/srv/package -u root build-server-sanity:1.3.0 npm run lint'
         },
         "unit": {
-          sh 'docker run -i --rm -v $PWD:/usr/src/app -u root build-server-sanity:1.3.0 npm run test'
+          sh 'docker run -i --rm -v $PWD:/srv/package -u root build-server-sanity:1.3.0 npm run test'
         }
   }
 }
